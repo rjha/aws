@@ -1,0 +1,21 @@
+
+# re-indent arduino IDE 2 spaces to 4 spaces
+
+Arduino IDE is brain damaged and whoever came with 2 space indentation
+deserves another brain damage medal!
+
+put following in your vimrc
+set tabstop=4   
+set expandtab  
+set shiftwidth=4
+set softtabstop=4
+
+press gg=G in escape mode
+
+# to double the space at beginning of every line
+:%s/^\s*/&&/g
+
+# To turn on syntax highlighting for .ino file
+:set filetype=cpp
+
+#aruino vim syntax file

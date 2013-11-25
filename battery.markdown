@@ -11,13 +11,16 @@ layout: default
     - created on 26 Nov. 2013
 
 ## Issues
+
 First, there are two kind of issues
+
     * Running arduino full time on batteries
     * Using batteries as a backup
 
 There are other variations as well, like running on rechargable batteries (charging via wall power supply) or using a solar panel to recharge the batteries when the sun is high. However, lets first take the simplest case, i.e. we are running on wall power supply and we just want batteries as a backup source.
 
 The MCU considerations are 
+
     * we are running Uno, that draws 34mA in power down mode.
     * we are not going to bypass the 7805 linear voltage regulators, so we are assuming that we are going to waste power inside 7805 regulator. 
     * The voltage requirements are same as assuming the wall power supply (7V-12v, idea case 9V)
@@ -86,6 +89,7 @@ There can be things like most battery packs available for AA batteries only. So 
     * You can put the batteries in parallel to increase capacity.
 
 ## AWS future considerations
+
     * If we can bypass the linear voltage regulator (or use an LTC3525) and get rocket scream board or 
 		other BBB then we can drive the power down mode consumption to micro amperes. Now assuming 5 second 
 		of wake up time every minute and 2 bursts of GSM modem lasting 10 seconds at 1A, we should require, 

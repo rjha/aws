@@ -43,7 +43,7 @@ Not all batteries can drive all loads. Ideally, the battery should be able to dr
 what are the burst rates of the battery? GSM modems can load the battery with upto 2A at a pulse rate of 577 us.
 
 ### Internal resistance (impedance?)
-@todo
+todo
 
 ### Discharge cycles
 How long the battery going to last? Every battery has a finite charge/discharge cycles.
@@ -81,7 +81,7 @@ There can be things like most battery packs available for AA batteries only. So 
 
 
 ## GSM modem pulse
-@todo
+todo
 
 ## Safety issues
 

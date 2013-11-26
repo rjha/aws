@@ -22,6 +22,12 @@ Our plan is to release
 - Help documents
 
 
+## Links
+
+
+- [Battery Research](http://rjha.github.io/aws/battery.html)
+- [Siting Details](http://rjha.github.io/aws/siting.html)
+
 ## Contact
 
 To get in touch email:&nbsp;<a href="mailto:support@github.com">support@github.com</a> and we’ll be happy to help you. 

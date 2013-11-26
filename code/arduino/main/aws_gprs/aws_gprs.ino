@@ -89,7 +89,7 @@ void micro_delay(int n) {
 void get_sensor_data(char* buffer, char* bencode) {
     
     // DHT22 pin needs 2 seconds
-    micro_delay(200);
+    micro_delay(250);
     dht22_code = myDHT22.readData();
 
     buffer[0] = 'T' ;
@@ -136,39 +136,27 @@ void get_sensor_data(char* buffer, char* bencode) {
     // Bencode dictionary
     bencode[0] = 'd' ;
 
-    bencode[1] = '1' ;
-    bencode[2] = ':' ;
-    bencode[3] = 'T' ;
-    bencode[4] = 'f' ;
+    sprintf(bencode+1,"%s","1:Tf");
     dtostrf(dht22_temp,5,1,bencode+5);  
-    bencode[10] = 'e' ;
-    bencode[11] = '1' ;
-    bencode[12] = ':' ;
-    bencode[13] = 'H' ;
-    bencode[14] = 'f' ;
+
+    sprintf(bencode+10,"%s","e1:Hf");
     dtostrf(humidity,4,1,bencode+15);  
-    bencode[19] = 'e' ;
-    bencode[20] = '1' ;
-    bencode[21] = ':' ;
-    bencode[22] = 'P' ;
-    bencode[23] = 'i' ;
+
+    sprintf(bencode+19,"%s","e1:Pi");
     sprintf(bencode+24,"%-5lu",pressure);
-    bencode[29] = 'e' ;
-    bencode[30] = '1' ;
-    bencode[31] = ':' ;
-    bencode[32] = 'R' ;
-    bencode[33] = 'i' ;
+
+    sprintf(bencode+29,"%s","e1:Ri");
     sprintf(bencode+34,"%-5d",rain_counter);
-    bencode[39] = 'e' ;
-    bencode[40] = 'e' ;
-    bencode[41] = '\0' ;
+
+    sprintf(bencode+39,"%s","e5:_sno_6:aws001");
+    bencode[55] = 'e' ;
+    bencode[56] = '\0' ;
 }
 
 void send_bulletin() {
 
     char buffer[33] ;
-    // 42: the meaning of life,universe and everything!
-    char bencode[42] ;
+    char bencode[57] ;
 
     get_sensor_data(buffer,bencode);
 
@@ -182,13 +170,14 @@ void send_bulletin() {
     ts[8] = '\0' ;        
     Serial.println(ts); 
     Serial.println(buffer);
-    Serial.println(bencode);
     #endif
 
     // pat watchdog
     wdt_reset();
 
+    // output
     lcd_output(buffer);
+    Serial.println(bencode);
 
     int hr = hour();
 

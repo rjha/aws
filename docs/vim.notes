@@ -18,4 +18,10 @@ press gg=G in escape mode
 # To turn on syntax highlighting for .ino file
 :set filetype=cpp
 
+or put this in your vimrc
+"arduino stuff
+autocmd! BufNewFile,BufRead *.ino,*.pde setlocal ft=arduino
+
 #aruino vim syntax file
+copy to ~/.vim/syntax folder
+

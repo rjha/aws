@@ -1,0 +1,402 @@
+@import url(http://fonts.googleapis.com/css?family=Damion|Trocchi|Muli:300,400);
+
+/* For pre-HTML5 browsers, from http://diveintohtml5.org/semantics.html#new-elements */
+
+
+header{
+	padding:30px;
+	margin-bottom: 30px;
+	border-bottom: 1px solid #ccc ;
+}
+
+header .inner {
+	text-align:center ;
+}
+
+h1 {
+	color:brown;
+	padding-bottom:10px;
+}
+
+p { 
+	padding:10px;
+}
+
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section { 
+	display:block;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+
+/* Main Layout */
+html {
+	margin-left: 10em;
+	margin-right: 10em;
+	background: #EEE;  
+
+}
+body {
+	font-family: 'PT Serif', Georgia, Times, 'Times New Roman', serif ;
+	/* font-family: Muli, 'Lucida Grande', 'Gill Sans MT', sans-serif; */
+	font-size: 1.15em;
+	font-weight: 300;
+	margin: 0px;
+	padding: 0px;
+	background: #fff;
+	min-width: 47.5em; /*fits tagline and photos*/
+}
+section {
+	padding: 1em 3em 1em 3em;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 52.5em; 
+}
+header>hgroup {
+	width: 100%;
+	background: #fff;
+	padding: 0px;
+	margin: 0px;			
+	text-align: right;
+	background-image: url('../images/atomicules_back_grey.png');
+	background-repeat: repeat;
+}
+header>hgroup h1 {
+	font-family: 'Damion', cursive;
+	font-size: 8em;
+	color: #fff;
+	font-weight: 400;
+}
+header>hgroup h2, header>hgroup h1 a, header>hgroup h2 a, header nav a, footer, footer a {
+	color: #fff;
+	font-weight: 400;
+}
+header>hgroup h1, header>hgroup h2, header nav ul {
+	padding-right: 10px;
+}
+header>hgroup h1 a:hover, header>hgroup h2 a:hover, header nav a:hover, footer a:hover {
+	text-shadow: 1px 0px 20px white;
+}
+header>form {
+	margin-top: 1em;
+}
+/* These next few in pixels since search box is defined in pixels */
+header nav { 
+	width: 100%;
+	background: #bd3c36;
+	text-align: right;
+	height: 42px;
+	font-size: 15px;
+	line-height: 42px;
+}
+
+header nav ul {
+	margin-right: 0px;
+}
+
+header nav li {
+	display: inline;
+	list-style: none;
+	margin-left: 0.5em;
+}
+header iframe {
+	position: relative;
+	top: -40px;
+	height: 40px;
+	padding-left: 10px;
+}
+/* end pixels */
+/* Body Footer styles */
+footer {
+	display: block;
+	background: #bd3c36;
+	font-size: 1.0em;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	width: 100%;
+	height: 3em;
+	line-height: 3em;
+	clear: both;
+}
+footer a {
+	text-decoration: underline;
+}
+footer img {
+	vertical-align: text-top;
+}
+pre {
+	/*background-color: LightGrey;*/
+	border: 1px solid;
+	font-size: 1em;
+	margin: 1em 0pt;
+	overflow-x: auto;
+	overflow-y: hidden;
+	padding: 0.25em;
+	padding-bottom: 2em;
+}
+a {
+	outline: none;
+	color: #666;
+	text-decoration: underline;
+}
+a:hover {
+	color: #c00;
+}
+a img {
+	border: none;
+}
+ul {
+	margin-left: 30px;
+	margin-bottom: 10px;
+}
+ol {
+	margin-left: 30px;
+	margin-bottom: 10px;
+}
+h1, h1 a {
+	text-decoration: none !important;
+	line-height: 1em;
+}
+h1 a:hover, h2 a:hover, nav a:hover, footer a:hover {
+	color: #444;
+}
+article {
+	margin: 0 0 2.0em 0;
+}
+article h2 {
+	color: #666;
+	font-weight: normal;
+	font-size: 1.5em;
+	letter-spacing: -0.05em;
+	margin: 0 0 0.8em 0;
+}
+article {
+	border-bottom:1px dotted #bbbbbb;
+	margin-bottom:4.5em;
+}
+.postcontent {				
+	font-size: 1.2em;
+	color: #333;
+}
+.postcontent a {
+	text-decoration: underline;
+	color: #666;
+}
+.postcontent a:hover {
+	text-decoration: underline;
+	color: #c00;
+}
+.postcontent .descrip,
+.postcontent .source {
+	margin: 1.0em 0 0 0;
+}
+.postcontent li {
+	line-height: 1.25em;
+}
+article p {
+	margin: 0 0 1.0em 0;
+	line-height: 1.5em;
+}
+article a {
+	text-decoration: underline;
+}
+article blockquote {
+	padding: 0 0 0 1.0em;
+	margin: 0 0 1.8em 0;
+	margin-bottom: 1.0em; 
+	margin-left: 2.0em;
+	border-left: 1px solid #444444;
+}
+article header h1 {
+	color: #222;
+	font-weight: normal;
+	font-size: 2.2em;
+	letter-spacing: -0.05em;
+	margin: 0 0 0.8em 0;
+	font-family: Trocchi;
+}
+article .quote div.quote {
+	font-size: 1.6em;
+	font-weight: bold;
+	color: #000;
+}
+article .quote div.source {
+	margin: 1.0em 0 0 0;
+}
+article .link .href {
+	font-size: 1.8em;
+	letter-spacing: -0.05em;
+}
+article .link .href a {
+	text-decoration: none;
+	color: #666;
+	padding: 0px;
+}
+article .link .href a:hover {
+	text-decoration: none;
+	color: #444;
+	padding: 0px;
+}
+article .descrip ul, article .postcontent ul, article .descrip ol, article .postcontent ol {
+	padding: 0px 0px 0px 1.6em;
+}
+ul.post-tags {
+	margin-left: -1.5em !important;
+	/* This overides the indent for lists in posts */
+}
+article .chat ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	margin-left: 0px !important;
+}
+article .chat ul li {
+	padding: 0.4em 0px 0.4em 0px;
+	margin: 0 0 0.1em 0;
+}
+article .chat ul li span.label {
+	font-weight: bold;
+}
+article .chat ul li.odd {
+	background-color: #fff;
+}
+article .chat ul li.even {
+	background-color: #fff;
+}
+article .audiobox {
+	background: #fff;
+}
+article .photo img {
+	max-width: 500px; /*For images that are silly big */
+}
+.post-tags li.tags ul, .post-footer li.tags ul li{
+	display: inline; 
+}
+.post-tags li.tags ul{
+	margin-left: -1.5em;
+	padding-left: 0em;
+}
+.post-tags{
+	list-style: none;
+	font-size: 0.8em;
+	margin-top: 2.0em;
+	color: #808080;
+}
+.post-tags li{
+	display: inline;
+}
+.post-tags li.tags {
+	padding-right: 2em;
+}
+.post-tags li.tags ul li {
+	text-align: left;
+	padding-right: 0.5em;
+}
+
+#prev-next {
+	position: relative;
+	display: inline;
+	left: 0px;
+	padding: 1.5em;
+	font-size: 1.5em;
+}
+#next {
+	left: 999px;
+	color: #222;
+}
+#previous {
+	left: 999px;
+	color: #222;
+}		
+a.permalink, a.commentlink {
+	display: inline-block;
+	margin-bottom: 1.5em;
+	padding: 0.5em 1.0em 0.5em 0em;
+	text-decoration: none;
+
+}
+a.permalink {
+	color: #c00;
+}
+a.permalink:hover {
+	color: #444444;
+}
+a.commentlink {
+	color: #333AFF;
+}
+a.commentlink:hover {
+	color: #444444;
+}
+
+			
+#dsq-comments {
+	margin-top: 0px;
+	padding-top: 0px;
+}
+
+
+
+		
+/*Archive page display */
+
+article#archive>ul>li {
+	list-style-type: none;
+	font-size: 3em;
+	clear: both;
+}
+
+article#archive li>ul li {
+	display: block; 
+	float: left; 
+	width: 100px; 
+	height: 100px; 
+	background: lightgrey; 
+	margin: 10px; 
+	padding: 10px; 
+	font-size: 0.3em;
+	overflow: hidden;
+}
+
+article#archive li>ul li time {
+	display: none;
+}
+
+article#archive li>ul li:hover time {
+	display: block;
+	font-size: 5.5em;
+	top: 0px;
+	left: 0px;
+}
+
+article#archive li>ul li:hover span, article#archive li>ul li:hover img {
+	display: none;
+}
+
+article#archive span.title {
+	font-weight: bold
+}
+
+article#archive a {
+	text-decoration: none;
+}
+
+article#archive {
+	border-bottom: none;
+}
+
+article#archive form {
+	margin-bottom: 2em;
+	font-size: 1.5em;
+	color: #c00;
+}
+
+article#archive form label {
+	margin-left: 0.75em;
+}
+
+article#archive form input {
+	margin-left: 0.25em;
+}

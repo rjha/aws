@@ -7,23 +7,23 @@ layout: default
 
 # Arduino Battery Research
 
-# History
-    - created on 26 Nov. 2013
+## History
+- created on 26 Nov. 2013
 
 ## Issues
 
 First, there are two kind of issues
 
-    * Running arduino full time on batteries
-    * Using batteries as a backup
+- Running arduino full time on batteries
+- Using batteries as a backup
 
 There are other variations as well, like running on rechargable batteries (charging via wall power supply) or using a solar panel to recharge the batteries when the sun is high. However, lets first take the simplest case, i.e. we are running on wall power supply and we just want batteries as a backup source.
 
 The MCU considerations are 
 
-    * we are running Uno, that draws 34mA in power down mode.
-    * we are not going to bypass the 7805 linear voltage regulators, so we are assuming that we are going to waste power inside 7805 regulator. 
-    * The voltage requirements are same as assuming the wall power supply (7V-12v, idea case 9V)
+- we are running Uno, that draws 34mA in power down mode.
+- we are not going to bypass the 7805 linear voltage regulators, so we are assuming that we are going to waste power inside 7805 regulator. 
+- The voltage requirements are same as assuming the wall power supply (7V-12v, idea case 9V)
 
  
 so why can't we just power the MCU on a 9V battery and be done with it? why do battery research at all? To understand that, lets write down the parameters that affect battery performance.
@@ -73,24 +73,24 @@ There can be things like most battery packs available for AA batteries only. So 
 
 ## AWS recommendations 
 
-    * We need to drive our MCU at 7-12V (we are not planning to bypass the linear voltage regulators, 
+* We need to drive our MCU at 7-12V (we are not planning to bypass the linear voltage regulators, 
 		no mucking with board), so see the nominal voltage of the battery and decide the number of batteries 
 		required and hence the size of pack.
-    * We need to drive GSM modem pulses, so we need a battery with C rating equivalent to highest current 
+* We need to drive GSM modem pulses, so we need a battery with C rating equivalent to highest current 
 		drawn by GSM modem.
-    * Get a battery with higher capacity 
-    * Get a battery with low self discharge rate. We plan to provide batteries as backup so users donot 
+* Get a battery with higher capacity 
+* Get a battery with low self discharge rate. We plan to provide batteries as backup so users donot 
 		have to take them out regularly. 
-    * NiMH means user have to charge them every 2 months or so but advantage is they are rechargable.
-    * Alkaline fits the bill of we do not plan to recharge. 
-    * Assuming 50mA of normal operation and two 10 second bursts for GSM modems at 1A, we would need, 
+* NiMH means user have to charge them every 2 months or so but advantage is they are rechargable.
+* Alkaline fits the bill of we do not plan to recharge. 
+* Assuming 50mA of normal operation and two 10 second bursts for GSM modems at 1A, we would need, 
 		24x50mAh + 2x1000x(1/72)mAh ~ 1250 mAh for 24 hours. So a 2200 mAh battery should be good for 
 		about 40 hours.
-    * You can put the batteries in parallel to increase capacity.
+* You can put the batteries in parallel to increase capacity.
 
 ## AWS future considerations
 
-    * If we can bypass the linear voltage regulator (or use an LTC3525) and get rocket scream board or 
+* If we can bypass the linear voltage regulator (or use an LTC3525) and get rocket scream board or 
 		other BBB then we can drive the power down mode consumption to micro amperes. Now assuming 5 second 
 		of wake up time every minute and 2 bursts of GSM modem lasting 10 seconds at 1A, we should require, 
 		5 seconds/minute x 60 x 24 = 2 HR of normal operation + 50mhA ~ 150mAh. With wake up happening 
@@ -109,6 +109,7 @@ todo
 - Battery Balancing would be required for a pack. We can use balancing plugs or chargers. 
 - Don't load more than discharge rate of a battery called C-rate. LiPo can burst and catch fire.
 - while charging batteries 
+
 	* Batteries should be in a fire proof container
 	* Batteries should be in a smart charger
 	 

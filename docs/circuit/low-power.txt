@@ -1,0 +1,136 @@
+31) power circuit on batteries
+Assuming 2200 mAh
+40mA
+backup = 2200/40 = 55 hours
+
++ How can we make a pack of batteries?
++ what kind of batteries are available?
+	- AA
+	- 9V is not recommended
+	- LR123
+	- LiPo
+	- Li-ion batteries?
+
++ How to wire a backup battery with a DC adapter?
++ voltage regulator - why? what is wrong with on-board regulator?
+	- switching regulator instead of a linear one
+	- can we drive the board at lower voltages!
+	- LTC3525 regulator
+
++ current draw in different sleep modes
+	SLEEP_MODE_IDLE - for USART interrupts
+
++ How to wake it up from sleep mode?
+	- external interrupts on INT0 and INT1
+	- watchdog WDT
+	- external RTC chip alarm
+	- what is TWI match?
+	- @imp when ISR is happening - execution of 
+	internal timers is suspended.
+
+	SLEEP_MODE_PWR_DOWN
+		- watchdog timer interrupt
+		- level interrupt on pin2/pin3
+			+ pin has to be held in that state for a 
+			 certain amount of time before the INT is triggered
+			+ The ISR routine for a level interrupt must detach the 
+	          interrupt otherwise the ISR will be repeatedly called
+				(see Arduino sleepCode for example of how to do that)
+
++ avr functions
+	cli()
+	sei()
+	set_sleep_mode
+	sleep_cpu
+	sleep_bod_disable
+	sleep_enable
+	sleep_disable
+
+	Arduino Brownout detector (BOD) module
+
+
++ Turn off what is not used?
+ (only needed when we are using SLEEP_MODE_IDLE)
+ http://www.nongnu.org/avr-libc/user-manual/group__avr__power.html
+	power_adc_disable();
+	power_spi_disable();
+	power_timer0_disable();
+	power_timer1_disable();
+	power_timer2_disable();
+	power_twi_disable()
+
+
++ How to ensure it can reboot itself when hung?
++ Solar panel in the mix
+	- How can we switch between solar panel and battery backup?
+	
++ How to turn off the peripheral (GSM modem)?
+	- MCU should wake up and boot GSM modem
+	- SIM900 can be turned OFF using AT commands
+		+ However the issue is voltage regulator
+		+ Linear voltage regulators would draw power
+		+ Either we insert a new voltage regulator
+			or power the GSM modem directly from LiPo battery.
+		+ what is the power rating? send a mail to simplelabs.co.in
+			- How to power a GSM modem directly from battery?
+			- LSH-20 D Lithium Battery (30$ a pop) 
+				+ can provide high current
+	- ATE0 command to turn off Echo mode.
+	
++ Rocketscreem low power library - do we need to use that? 
+
++ Tradeoffs involved in the  board
+	- Uno kind of board with 7805 voltage regulator will need 10mA in idle mode
+		(Uno draws 34mA in power down mode)
+	- Pro boards need a bigger kit to program/transfer
+	- Remove the 7805 regulator when you are on batteries!
+	- why cannot we use something like a RBBB or Arduino Mini
+		+ we have quite a number of peripherals
+		+ we have to see the required number of pins.
+			
+			- sensors (DHT22/BMP085)
+			- GSM modem
+			- RTC chip (1.5 mA)
+			- LCD
+			- SD card for data logging?
+
+	- Transferring programs/ interfacing would be tough!
+	- Alternative - design a custom power supply!
+	- Getting boards in India is a tough ask!
+	- MSP430 does not look very tempting as compared to Arduino RBBB
++ Can we use Energia and MSP430?
+	- what is MSP430 power consumption?
+
++ How to measure the current used by MCU?
++ wakeup time of Arduino UNO MCU?
++ How can we ensure that Arduino reboots on software hang?
+
+
++ Strategy #1
+	- use a BareBonesBoard for Arduino
+	- use rocketscream low power library
+	- use watchdog timer to wake up
+	- go into power down mode
+	- 1 second pulse - use counter 
+	(how long does it take for Arduino to become functional again?)
+	- After certain ticks (say 600 or 10 min. interval)
+	- with 4 second pulses - 300 pulses = 20 minute
+		we can use rollup counter to count even more
+		integer limits?	
+	- get rid of the Time and TimerAlarm libraries
+	- use Adafruit/JeeLab RTC library for DS1307 
+		(w/o dependency on Time library)
+	- pin2_isr()
+		Rain gauge should wake it up
+		Use a pushbutton right now
+
+
+- strategy #2
+	- Use Energia and MSP430 and port the aws sketch
+	- Please Beware that msp430 has only 16KB!
+		+ Watchdog timer
+		+ DS1307 (Wire library)
+		+ GSM modem interfacing (Serial)
+		+ DHT22
+		+ BMP085 (I2C)
+		+ SD card?

@@ -12,6 +12,8 @@ any derivative work as you see fit.
 We plan to learn and engage with you in the process. Whether you are a student, hobbyist or 
 a professional, all are welcome.
 
+![Image](images/wip/aws_stevenson_v1a.jpeg?raw=true)
+
 ## Plan
 Our plan is to release
 

@@ -24,16 +24,18 @@ Our plan is to release
 - Help documents
 
 
-## Links
+## Technical
 
 
-- [Battery Research](http://rjha.github.io/aws/battery.html)
-- [Siting Details](http://rjha.github.io/aws/siting.html)
+- [Battery Research]({{ site.htdocs }}/tech/battery.html)
+- [Siting Details]({{ site.htdocs }}/tech/siting.html)
+- [GSM modem SIM900 vs. SIM300]({{ site.htdocs }}/tech/gsm_sim_900_300.html)
 
 ## Contact
 
-To get in touch email:&nbsp;<a href="mailto:support@github.com">support@github.com</a> and we’ll be happy to help you. 
+To get in touch email:&nbsp;<a href="mailto:x@gmail.com">aws project guy</a> 
 
 ## Contributing
 
 To contribute code or documentation, please fork rjha/aws github repository and send a pull request.
+

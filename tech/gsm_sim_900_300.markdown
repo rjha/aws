@@ -1,0 +1,115 @@
+---
+title: SIM 900 and SIM 300 GSM modem comparison 
+layout: default
+---
+
+# SIM 900 and SIM 300 GSM modem comparison 
+
+<table>
+<tr >
+    <td>Parameters</td>
+    <td>GSM 300</td>
+    <td>GSM 900</td>
+</tr>
+
+<tr>
+    <td>GPRS</td>
+    <td>Yes (pg 12) </td>
+    <td>Yes (pg 12) </td>
+</tr>
+
+<tr>
+    <td>Power wasted in Voltage regulator for GSM breakout</td>
+    <td>PD max = 20W, pg 3 </td>
+    <td>PD max = 20W, pg 3 </td>
+</tr>
+
+<tr>
+    <td>Current draw by voltage regulator</td>
+    <td>10mA ( in datsheet of LM317 voltage regulator) pg 3 </td>
+    <td>10mA ( in datsheet of LM317 voltage regulator) pg 3 </td>
+</tr>
+
+<tr>
+    <td>Current draw by GSM</td>
+    <td>10mA ( in datsheet of LM317 voltage regulator) pg 3 </td>
+    <td>10mA ( in datsheet of LM317 voltage regulator) pg 3 </td>
+</tr>
+
+<tr>
+    <td>Can we shutdown the modem by issuing AT command?</td>
+    <td>Power down mode- reducing the functionality of the phone. This will deregister the phone from the network AT Command is : AT+CFUN = 0 wait for deregister , ATD6241xxxx;AT+CFUN = 1.
+    In page 29 on SIM900, sleep mode have different AT command. For SIM900, it requests to set AT command “AT+CSCLK=1” to enable the sleep mode; the default value is 0, that can’t make the module enter sleep mode. For more details please refer to the AT command list.</td>
+    <td>same as in SIM 300 </td>
+</tr>
+
+
+<tr>
+    <td>Price</td>
+    <td>850</td>
+    <td>1400</td>
+</tr>
+
+
+<tr>
+    <td>Availability</td>
+    <td>[GSM300](http://probots.co.in)</td>
+    <td>[GSM 900](http://probots.co.in/)</td>
+</tr>
+
+
+<tr>
+    <td>Datasheet</td>
+    <td>[Datasheet 300](http://probots.co.in/Manuals/SIM300.pdf)</td>
+    <td>[Datasheet 900](http://www.simcom.us/act_admin/supportfile/SIM900_HD_V1.01%28091226%29.pdf)</td>
+</tr>
+
+</table>
+
+
+[From here](http://raviyp.in/index.php/embedded/143-difference-between-sim300-and-sim900-gsm-modems), things are coming like this way...<br>
+
++ Difference between Sim900 and sim 300
+
+    + SIM900 and the SIM300 modem operate from 3.4V to 4.5V supply range.
+    + Same AT commands used for call/sms in SIM300 can be used with the SIM900 modem.
+    + SIM900 is a quad band modem where as sim300 supports only 900,1800,1900MHz band.
+    + SIm300 850 Rs costing and Sim 900 cost 1400 Rs from [Probot's GSM section.](http://probots.co.in/)
+    
++ What we should use?
+
+    + We are interfacing to web service with GSM.
+    + Both GSM 900 and GSM 300 in breakout module sucks requires 7-15V with 1 A current while performing operations.
+    + GSM 900 having quad band feature and it is advanced version of GSM 300 .
+    + AT commands are same for both of them.
+    + So for better GPRS connection and bandwidth GSM900 is best recommended  module.
+
++ Current issue
+
+    + If we want to bypass the voltage regulator then we have to buy this [sim90.](http://probots.co.in/)
+    + This is the spare sim900 without regulator.this is standalone sim device. We have to interface it with 3.5v with Low drop out regulator which consume less current and lot more options are open before us.( need good hands to fabricate the device on PCB, not on zero board).
+
+## Constrains for now
+
++ If breakout module used then
+    + We have to give ~9V with 1A atleast to GSM by whatever source.
+    + On battery, with AA+ 1.2 v * 8 = 9.6 v. of say 2000mAh.( 8 battery pack with avg 2000mAh )(rechargable), costing 350rs/ 2pcs, this makes cost of 8 pcs battery to 1400Rs.(Detail from whole sale market of battery)).
+    + Modem has low power consumption of 0.25 A during normal operations and around 1 A during transmission.(mentioned in [site](http://probots.co.in/) under specification).
+    + so in case we keep GSM modem in its lowest current consumption then 
+        + 2000 mA in 60 min => (2000 ) / 1000 A in 60 min.
+        + 2 A in 60 min.
+        + 0.25 A in 480 min ~ 8 hrs.
+        + Now its not certain that when GSm will suck 1A, but its knows that it will eat 1A at transmission point.
+        + In this case, if GSM runs on battery as backup then without putting GSM in transmission, then battery can power GSM for max ~8 hrs.
+
+## Battery Recommended
+
++ For GSM battery backup with 8hrs as backup time, is not bad. The battery of AA+ of 1.2v with avg 2000mAh of 8 as pack will powerup the GSm by 9.6 V to GSM breakout module and last for 8 Hrs.
++ How this AA+ can power up GSM.
+    + 9.6 v is sufficient to power up the board, as per datasheet too.
+    + Current req. to GSM is 0.25 A< GSM < 1 A and battery got 2000 m A per hour capacity.
+    + [From here, power stream](http://www.powerstream.com/AA-tests.htm) shows the comparision, and also shows that AA battery can discharge itself at 2 A discharge rate. Curves shown there.
+    + This confirms that AA+ battery have that burst rate to release upto 2A to GSM, hence droping the capacity. 
+
+
+

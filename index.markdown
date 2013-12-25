@@ -27,8 +27,9 @@ Our plan is to release
 ## Technical
 
 
-- [Battery Research]({{ site.htdocs }}/tech/battery.html)
-- [Siting Details]({{ site.htdocs }}/tech/siting.html)
+- [Arduino low power board]({{ site.htdocs }}/tech/bbb.html)
+- [Battery and chargers]({{ site.htdocs }}/tech/battery.html)
+- [AWS siting details]({{ site.htdocs }}/tech/siting.html)
 - [GSM modem SIM900 vs. SIM300]({{ site.htdocs }}/tech/gsm_sim_900_300.html)
 
 ## Contact

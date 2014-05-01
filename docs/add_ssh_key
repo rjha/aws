@@ -1,0 +1,20 @@
+https://help.github.com/articles/generating-ssh-keys  this link may help us a lot to work before .
+
+the steps we should fallow up for add SSH key to our account.
+1)make sure are you in Home by typing $pwd
+2)make sure your ssh directory is empty or having key ? by typing $cd ~/.ssh
+                                                                  $ls -al
+3)If your SSH dont have file like id_rsa.pub or id_dsa.pub Generate new SSH key by     	typing $ssh-keygen -t rsa -C "your_email@examp.com"
+press Enter
+4)It will ask where to save key wheter (/home/you/.ssh/id_rsa): press Enter 
+5)It will ask passphrase , like password for your SSH keys . 
+  Enter passphrase (empty for no passphrase): [Type a passphrase] 
+6)confirm the passphrase , Enter same passphrase again: [Type passphrase again]
+7)then add your new key to SSH agent by typing ssh-add ~/.ssh/id_rsa
+8)Next download xclip by typing $sudo apt-get install xclip
+9)Copies the contents of the id_rsa.pub file to your clipboard by typing 
+  $xclip -sel clip < ~/.ssh/id_rsa.pub
+  
+10) go to your account , account settings click SSH key , add Key , label some name , below in key space press ctrl+v , add key .
+ 
+ finished you can see a key added to your account successfully , you can clone now.

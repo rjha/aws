@@ -2,9 +2,11 @@ The ATtiny Schematic file having the Schematic of the ATtiny Development Board,
 
 and In the Schematic only mentioned Every component value were it attached in the 
 
-Schematic , the programming part here they used ISP technic,MISO,MOSI,SCK,VCC and GND.
+Schematic , the programming part here they used ISP technic,MISO,MOSI,SCK,VCC and GND,
 
-We can use that, as we need and our comfort to upload .hex to chip.
+We can use that. and we can use other technics like parallel programmers or RS232 Compitable whatever 
+
+as we need and our comfort to upload .hex to chip.
 
 
 

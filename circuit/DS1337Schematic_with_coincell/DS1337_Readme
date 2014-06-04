@@ -1,0 +1,8 @@
+DS1337 Schematic With coincell
+
+-The Pdf DS1337schematic_with_coincell  Having all the detail regarding the Schematic
+
+-The pin what we connect to the coin cell, same pin we can use to direct source feed
+ (3.3 - 5 v and GND)
+
+-Two interrupts we will get in our DS1337

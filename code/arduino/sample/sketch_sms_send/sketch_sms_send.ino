@@ -1,20 +1,18 @@
 #include <SoftwareSerial.h>
 
-SoftwareSerial gsmSerial(10, 11);
+SoftwareSerial gsmSerial(8, 9);
 
 void setup() {
  
   Serial.begin(9600);
   gsmSerial.begin(9600);
   
-  gsmSerial.println("AT+CMGF=1");
-  delay(200);
-  gsmSerial.println("AT+CSMS=1");
-  delay(200);
-  gsmSerial.println("AT+CNMI=2,2,0,0");
-  delay(200);
- 
- 
+  gsmSerial.println("AT");
+  delay(500);
+  toSerial();
+  gsmSerial.println("AT+CMGF=1\r");
+  delay(500);
+  toSerial();
 }
 
 void loop() {
@@ -25,12 +23,16 @@ void loop() {
     delay(1000);
     gsmSerial.print("AT+CMGF=1\r");
     delay(1000);
-    gsmSerial.print("AT+CMGS=\"+919886124428\"\r"); 
+    toSerial();
+    gsmSerial.print("AT+CMGS=\"+919755182991\"\r"); 
     delay(1000);
-    gsmSerial.print("yuktix sms test @");
+    toSerial();
+    gsmSerial.print("Telit sms test");
     gsmSerial.print(count);
     gsmSerial.println();
+    // CTRL-Z
     gsmSerial.write(0x1A);
+    toSerial();
     count++ ;
     delay(3000); 
     
@@ -41,4 +43,9 @@ void loop() {
   while(1);
   
   
+}
+void toSerial(){
+  if( gsmSerial.available()){
+    Serial.print( gsmSerial.readString());
+  }
 }
